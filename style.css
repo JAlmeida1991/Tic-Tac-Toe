@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 /* body {
@@ -7,24 +9,45 @@
     margin-top: 10%;
 } */
 
-#container div {
-    width: 200px;
-    height: 200px;
-    border: 2.5px solid black;
-    display: inline-block;
-    font-size: 100px;
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #eee;
+}
+
+#container>* {
+    border: 1px solid black;
     text-align: center;
-    /* Hide the Dots */
-    color: white;
-    margin-bottom: 5px;
+    font-size: 3.5rem;
 }
 
 #container {
-    width: 650px;
-    height: 650px;
-    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 400px;
+    height: 400px;
+    margin: 40px auto;
 }
 
 button {
     display: none;
+    /* display: block; */
+    margin: 0 auto;
+    border: none;
+    background-color: #95a5a6;
+    padding: .5rem;
+    margin-top: 2rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.grid {
+    padding-top: 2rem;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 2rem;
 }

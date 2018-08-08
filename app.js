@@ -32,9 +32,17 @@ for (let i = 0; i < grid.length; i++) {
     grid[i].addEventListener("click", ticTacToe);
 }
 
+button.addEventListener('click', function () {
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].addEventListener("click", ticTacToe);
+        grid[i].textContent = '';
+    }
+    init();
+});
+
+
 function ticTacToe() {
-    if (this.textContent === ".") {
-        this.style.color = "black";
+    if (this.textContent === '') {
         this.textContent = turnPlayer();
         turnCount++;
         checkWinner();
@@ -44,11 +52,7 @@ function ticTacToe() {
 }
 
 function turnPlayer() {
-    if (currentPlayer === player1) {
-        currentPlayer = player2;
-    } else {
-        currentPlayer = player1;
-    }
+    currentPlayer === player1 ? currentPlayer = player2 : currentPlayer = player1;
     return currentPlayer.name;
 }
 
@@ -118,6 +122,7 @@ function checkDiagonal() {
 function checkTie() {
     if (currentPlayer.isWinner === false && turnCount === 9) {
         console.log("Tie!");
+        button.style.display = 'block';
     }
 }
 
@@ -125,6 +130,16 @@ function gameOver() {
     if (currentPlayer.isWinner) {
         for (let i = 0; i < grid.length; i++) {
             grid[i].removeEventListener("click", ticTacToe);
+            button.style.display = 'block';
         }
     }
+}
+
+
+function init() {
+    turnCount = 0;
+    player1.isWinner = false;
+    player2.isWinner = false;
+    currentPlayer = player1;
+    button.style.display = 'none';
 }
