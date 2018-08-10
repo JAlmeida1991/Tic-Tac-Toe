@@ -29,7 +29,7 @@ body {
     margin: 40px auto;
 }
 
-button {
+.button {
     display: none;
     /* display: block; */
     margin: 0 auto;
@@ -47,7 +47,13 @@ button {
     cursor: pointer;
 }
 
-h1 {
+.title {
     text-align: center;
     margin-top: 2rem;
+}
+
+.winner {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
 }

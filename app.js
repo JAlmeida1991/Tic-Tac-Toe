@@ -8,21 +8,20 @@ const six = document.querySelector("#six");
 const seven = document.querySelector("#seven");
 const eight = document.querySelector("#eight");
 const nine = document.querySelector("#nine");
-const button = document.querySelector("button");
+const button = document.querySelector(".button");
+const p = document.querySelector(".winner");
 
 
-//// Need to work on logic for Play Again button
 
-
-const player1 = {
-    name: "O",
-    isWinner: false
+class Player {
+    constructor(name) {
+        this.name = name;
+        this.isWinner = false;
+    }
 }
 
-const player2 = {
-    name: "X",
-    isWinner: false
-}
+const player1 = new Player("O");
+const player2 = new Player("X");
 
 let currentPlayer;
 let turnCount = 0;
@@ -78,16 +77,15 @@ function checkCell(cell) {
 
 function checkHorizontal() {
     if (checkCell(one) && checkCell(two) && checkCell(three)) {
-        console.log(`${currentPlayer.name} wins!`);
+        displayWinner();
         return currentPlayer.isWinner = true;
     }
     if (checkCell(four) && checkCell(five) && checkCell(six)) {
-        console.log(`${currentPlayer.name} wins!`);
+        displayWinner()
         return currentPlayer.isWinner = true;
     }
     if (checkCell(seven) && checkCell(eight) && checkCell(nine)) {
-        console.log(`${currentPlayer.name} wins!`);
-        // console.log("goodbye World");
+        displayWinner();
         return currentPlayer.isWinner = true;
     }
 
@@ -95,26 +93,26 @@ function checkHorizontal() {
 
 function checkVertical() {
     if (checkCell(one) && checkCell(four) && checkCell(seven)) {
-        console.log(`${currentPlayer.name} wins!`);
+        displayWinner();
         return currentPlayer.isWinner = true;
     }
     if (checkCell(two) && checkCell(five) && checkCell(eight)) {
-        console.log(`${currentPlayer.name} wins!`);
+        displayWinner();
         return currentPlayer.isWinner = true;
     }
     if (checkCell(three) && checkCell(six) && checkCell(nine)) {
-        console.log(`${currentPlayer.name} wins!`);
+        displayWinner();
         return currentPlayer.isWinner = true;
     }
 }
 
 function checkDiagonal() {
     if (checkCell(one) && checkCell(five) && checkCell(nine)) {
-        console.log(`${currentPlayer.name} wins!`);
+        displayWinner();
         return currentPlayer.isWinner = true;
     }
     if (checkCell(three) && checkCell(five) && checkCell(seven)) {
-        console.log(`${currentPlayer.name} wins!`);
+        displayWinner();
         return currentPlayer.isWinner = true;
     }
 }
@@ -138,8 +136,13 @@ function gameOver() {
 
 function init() {
     turnCount = 0;
+    p.textContent = '';
     player1.isWinner = false;
     player2.isWinner = false;
-    currentPlayer = player1;
+    currentPlayer = player2;
     button.style.display = 'none';
+}
+
+function displayWinner() {
+    p.textContent = `${currentPlayer.name} wins!`
 }
