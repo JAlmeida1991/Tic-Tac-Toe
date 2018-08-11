@@ -13,6 +13,7 @@ const p = document.querySelector(".winner");
 
 
 
+// Player objects
 class Player {
     constructor(name) {
         this.name = name;
@@ -23,26 +24,32 @@ class Player {
 const player1 = new Player("O");
 const player2 = new Player("X");
 
+// currentPlayer will point as a refrence to either player1 or player2
+
 let currentPlayer;
-let turnCount = 0;
 
+// Need to store turn count in a variable in order to call tie function when it reaches 9
 
-for (let i = 0; i < grid.length; i++) {
-    grid[i].addEventListener("click", ticTacToe);
-}
+let turnCount = null;
+
+// Event Listeners
+
+grid.forEach(box => box.addEventListener("click", ticTacToe));
+
 
 button.addEventListener('click', function () {
-    for (let i = 0; i < grid.length; i++) {
-        grid[i].addEventListener("click", ticTacToe);
-        grid[i].textContent = '';
-    }
+    grid.forEach(box => {
+        box.addEventListener("click", ticTacToe);
+        box.textContent = '';
+    });
     init();
 });
 
+// Need to actually use a named function in order remove it from event listener
 
-function ticTacToe() {
-    if (this.textContent === '') {
-        this.textContent = turnPlayer();
+function ticTacToe(e) {
+    if (e.target.textContent === '') {
+        e.target.textContent = turnPlayer();
         turnCount++;
         checkWinner();
         checkTie();
@@ -119,17 +126,17 @@ function checkDiagonal() {
 
 function checkTie() {
     if (currentPlayer.isWinner === false && turnCount === 9) {
-        console.log("Tie!");
+        displayTie();
         button.style.display = 'block';
     }
 }
 
 function gameOver() {
     if (currentPlayer.isWinner) {
-        for (let i = 0; i < grid.length; i++) {
-            grid[i].removeEventListener("click", ticTacToe);
+        grid.forEach(box => {
+            box.removeEventListener("click", ticTacToe);
             button.style.display = 'block';
-        }
+        });
     }
 }
 
@@ -145,4 +152,8 @@ function init() {
 
 function displayWinner() {
     p.textContent = `${currentPlayer.name} wins!`
+}
+
+function displayTie() {
+    p.textContent = "It's a tie!";
 }
