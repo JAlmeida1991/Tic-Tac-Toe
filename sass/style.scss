@@ -1,0 +1,112 @@
+$colorBlack: #000;
+$colorWinner: #e74c3c;
+
+*::before,
+*::after,
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #eee;
+}
+
+#container > * {
+  text-align: center;
+  font-size: 7rem;
+  @media screen and (max-width: 40em) {
+    font-size: 5rem;
+  }
+}
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 40rem;
+  height: 40rem;
+  margin: 3.5rem auto;
+  @media screen and (max-width: 40em) {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+.button {
+  display: none;
+  margin: 0 auto;
+  border: none;
+  background-color: #95a5a6;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  outline: none;
+  &:active {
+    transform: translateY(0.2rem);
+    box-shadow: 0 0.1rem 0.1rem $colorBlack;
+  }
+}
+
+.grid {
+  padding-top: 2rem;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 3.5rem;
+}
+
+.outcome {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+#one {
+  border-bottom: 0.2rem solid $colorBlack;
+  border-right: 0.2rem solid $colorBlack;
+}
+
+#two {
+  border-bottom: 0.2rem solid $colorBlack;
+  border-right: 0.2rem solid $colorBlack;
+}
+
+#three {
+  border-bottom: 0.2rem solid $colorBlack;
+}
+
+#four {
+  border-bottom: 0.2rem solid $colorBlack;
+  border-right: 0.2rem solid $colorBlack;
+}
+
+#five {
+  border-bottom: 0.2rem solid $colorBlack;
+  border-right: 0.2rem solid $colorBlack;
+}
+
+#six {
+  border-bottom: 0.2rem solid $colorBlack;
+}
+
+#seven {
+  border-right: 0.2rem solid $colorBlack;
+}
+
+#eight {
+  border-right: 0.2rem solid $colorBlack;
+}
+.winningColor-js {
+  color: $colorWinner;
+}

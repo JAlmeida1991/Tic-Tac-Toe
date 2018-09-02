@@ -9,16 +9,14 @@ const seven = document.querySelector("#seven");
 const eight = document.querySelector("#eight");
 const nine = document.querySelector("#nine");
 const button = document.querySelector(".button");
-const p = document.querySelector(".winner");
-
-
+const outcome = document.querySelector(".outcome");
 
 // Player objects
 class Player {
-    constructor(name) {
-        this.name = name;
-        this.isWinner = false;
-    }
+  constructor(name) {
+    this.name = name;
+    this.isWinner = false;
+  }
 }
 
 const player1 = new Player("O");
@@ -36,124 +34,146 @@ let turnCount = null;
 
 grid.forEach(box => box.addEventListener("click", ticTacToe));
 
-
-button.addEventListener('click', function () {
-    grid.forEach(box => {
-        box.addEventListener("click", ticTacToe);
-        box.textContent = '';
-    });
-    init();
+button.addEventListener("click", function() {
+  grid.forEach(box => box.addEventListener("click", ticTacToe));
+  init();
 });
 
 // Need to actually use a named function in order remove it from event listener
 
 function ticTacToe(e) {
-    if (e.target.textContent === '') {
-        e.target.textContent = turnPlayer();
-        turnCount++;
-        checkWinner();
-        checkTie();
-        gameOver();
-    }
+  if (e.target.textContent === "") {
+    e.target.textContent = turnPlayer();
+    turnCount++;
+    console.log(e.target.textContent);
+    console.log(currentPlayer.name);
+    checkWinner();
+    checkTie();
+    gameOver();
+  }
 }
 
 function turnPlayer() {
-    currentPlayer === player1 ? currentPlayer = player2 : currentPlayer = player1;
-    return currentPlayer.name;
+  currentPlayer === player1
+    ? (currentPlayer = player2)
+    : (currentPlayer = player1);
+  return currentPlayer.name;
 }
 
 function checkWinner() {
-    if (currentPlayer.name === "X") {
-        checkHorizontal();
-        checkVertical();
-        checkDiagonal();
-    }
-    if (currentPlayer.name === "O") {
-        checkHorizontal();
-        checkVertical();
-        checkDiagonal();
-    }
+  if (currentPlayer.name === "X") {
+    checkHorizontal();
+    checkVertical();
+    checkDiagonal();
+  }
+  if (currentPlayer.name === "O") {
+    checkHorizontal();
+    checkVertical();
+    checkDiagonal();
+  }
 }
 
 // Game Logic:
 
-
-function checkCell(cell) {
-    return currentPlayer.name === cell.textContent;
-}
-
 function checkHorizontal() {
-    if (checkCell(one) && checkCell(two) && checkCell(three)) {
-        displayWinner();
-        return currentPlayer.isWinner = true;
-    }
-    if (checkCell(four) && checkCell(five) && checkCell(six)) {
-        displayWinner()
-        return currentPlayer.isWinner = true;
-    }
-    if (checkCell(seven) && checkCell(eight) && checkCell(nine)) {
-        displayWinner();
-        return currentPlayer.isWinner = true;
-    }
-
+  if (checkCells(one, two, three)) {
+    changeWinnerColor(one, two, three);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
+  if (checkCells(four, five, six)) {
+    changeWinnerColor(four, five, six);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
+  if (checkCells(seven, eight, nine)) {
+    changeWinnerColor(seven, eight, nine);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
 }
 
 function checkVertical() {
-    if (checkCell(one) && checkCell(four) && checkCell(seven)) {
-        displayWinner();
-        return currentPlayer.isWinner = true;
-    }
-    if (checkCell(two) && checkCell(five) && checkCell(eight)) {
-        displayWinner();
-        return currentPlayer.isWinner = true;
-    }
-    if (checkCell(three) && checkCell(six) && checkCell(nine)) {
-        displayWinner();
-        return currentPlayer.isWinner = true;
-    }
+  if (checkCells(one, four, seven)) {
+    changeWinnerColor(one, four, seven);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
+  if (checkCells(two, five, eight)) {
+    changeWinnerColor(two, five, eight);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
+  if (checkCells(three, six, nine)) {
+    changeWinnerColor(three, six, nine);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
 }
 
 function checkDiagonal() {
-    if (checkCell(one) && checkCell(five) && checkCell(nine)) {
-        displayWinner();
-        return currentPlayer.isWinner = true;
-    }
-    if (checkCell(three) && checkCell(five) && checkCell(seven)) {
-        displayWinner();
-        return currentPlayer.isWinner = true;
-    }
+  if (checkCells(one, five, nine)) {
+    changeWinnerColor(one, five, nine);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
+  if (checkCells(three, five, seven)) {
+    changeWinnerColor(three, five, seven);
+    displayWinner();
+    return (currentPlayer.isWinner = true);
+  }
 }
 
 function checkTie() {
-    if (currentPlayer.isWinner === false && turnCount === 9) {
-        displayTie();
-        button.style.display = 'block';
-    }
+  if (currentPlayer.isWinner === false && turnCount === 9) {
+    displayTie();
+    button.style.display = "block";
+  }
 }
 
 function gameOver() {
-    if (currentPlayer.isWinner) {
-        grid.forEach(box => {
-            box.removeEventListener("click", ticTacToe);
-            button.style.display = 'block';
-        });
-    }
+  if (currentPlayer.isWinner) {
+    grid.forEach(box => {
+      box.removeEventListener("click", ticTacToe);
+      button.style.display = "block";
+    });
+  }
 }
 
-
 function init() {
-    turnCount = 0;
-    p.textContent = '';
-    player1.isWinner = false;
-    player2.isWinner = false;
-    currentPlayer = player2;
-    button.style.display = 'none';
+  turnCount = 0;
+  outcome.textContent = "";
+  player1.isWinner = false;
+  player2.isWinner = false;
+  //   currentPlayer = player1;
+  button.style.display = "none";
+  removeWinnerColor();
+  resetGrid();
 }
 
 function displayWinner() {
-    p.textContent = `${currentPlayer.name} wins!`
+  outcome.textContent = `${currentPlayer.name} wins!`;
 }
 
 function displayTie() {
-    p.textContent = "It's a tie!";
+  outcome.textContent = "It's a tie!";
+}
+
+// Using rest param in order to add winning boxes to winningColor-js color
+function changeWinnerColor(...boxes) {
+  boxes.forEach(box => box.classList.add("winningColor-js"));
+}
+
+// Using rest param in order to call every and see if a player is a winner
+function checkCells(...cells) {
+  return cells.every(cell => cell.textContent === currentPlayer.name);
+}
+
+// Need to remove winningColor-js class since in a new game color change will persist if do not activelly remove it
+function removeWinnerColor() {
+  grid.forEach(box => box.classList.remove("winningColor-js"));
+}
+// Need to reset grid otherwise values from previous game will still be present
+function resetGrid() {
+  grid.forEach(box => (box.textContent = ""));
 }

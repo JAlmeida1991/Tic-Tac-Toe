@@ -1,105 +1,124 @@
 *::before,
 *::after,
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #eee;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #eee;
 }
 
-#container>* {
-    text-align: center;
-    font-size: 7rem;
-}
-
-#container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 40rem;
-    height: 40rem;
-    margin: 3.5rem auto;
-}
-
-.button {
-    display: none;
-    margin: 0 auto;
-    border: none;
-    background-color: #95a5a6;
-    padding: .8rem;
-    margin-bottom: 2rem;
-    border-radius: .4rem;
-    cursor: pointer;
-    outline: none;
-}
-
-.grid {
-    padding-top: 2rem;
-    cursor: pointer;
-}
-
-.title {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 3.5rem;
-}
-
-.winner {
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 2.5rem;
-}
-
-#one {
-    border-bottom: .2rem solid black;
-    border-right: .2rem solid black;
-}
-
-#two {
-    border-bottom: .2rem solid black;
-    border-right: .2rem solid black;
-}
-
-#three {
-    border-bottom: .2rem solid black;
-}
-
-#four {
-    border-bottom: .2rem solid black;
-    border-right: .2rem solid black;
-}
-
-#five {
-    border-bottom: .2rem solid black;
-    border-right: .2rem solid black;
-}
-
-#six {
-    border-bottom: .2rem solid black;
-}
-
-#seven {
-    border-right: .2rem solid black;
-}
-
-#eight {
-    border-right: .2rem solid black;
+#container > * {
+  text-align: center;
+  font-size: 7rem;
 }
 
 @media screen and (max-width: 40em) {
-    #container {
-        width: 30rem;
-        height: 30rem;
-    }
-    #container>* {
-        font-size: 5rem;
-    }
+  #container > * {
+    font-size: 5rem;
+  }
 }
+
+#container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  width: 40rem;
+  height: 40rem;
+  margin: 3.5rem auto;
+}
+
+@media screen and (max-width: 40em) {
+  #container {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+.button {
+  display: none;
+  margin: 0 auto;
+  border: none;
+  background-color: #95a5a6;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:active {
+  -webkit-transform: translateY(0.2rem);
+          transform: translateY(0.2rem);
+  -webkit-box-shadow: 0 0.1rem 0.1rem #000;
+          box-shadow: 0 0.1rem 0.1rem #000;
+}
+
+.grid {
+  padding-top: 2rem;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 3.5rem;
+}
+
+.outcome {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+#one {
+  border-bottom: 0.2rem solid #000;
+  border-right: 0.2rem solid #000;
+}
+
+#two {
+  border-bottom: 0.2rem solid #000;
+  border-right: 0.2rem solid #000;
+}
+
+#three {
+  border-bottom: 0.2rem solid #000;
+}
+
+#four {
+  border-bottom: 0.2rem solid #000;
+  border-right: 0.2rem solid #000;
+}
+
+#five {
+  border-bottom: 0.2rem solid #000;
+  border-right: 0.2rem solid #000;
+}
+
+#six {
+  border-bottom: 0.2rem solid #000;
+}
+
+#seven {
+  border-right: 0.2rem solid #000;
+}
+
+#eight {
+  border-right: 0.2rem solid #000;
+}
+
+.winningColor-js {
+  color: #e74c3c;
+}
+/*# sourceMappingURL=style.css.map */
