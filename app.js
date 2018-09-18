@@ -1,3 +1,4 @@
+// Global DOM variables
 const grid = document.querySelectorAll(".grid");
 const one = document.querySelector("#one");
 const two = document.querySelector("#two");
@@ -34,7 +35,8 @@ let turnCount = null;
 
 grid.forEach(box => box.addEventListener("click", ticTacToe));
 
-button.addEventListener("click", function() {
+// This will handle the reset game logic
+button.addEventListener("click", () => {
   grid.forEach(box => box.addEventListener("click", ticTacToe));
   init();
 });
@@ -45,8 +47,6 @@ function ticTacToe(e) {
   if (e.target.textContent === "") {
     e.target.textContent = turnPlayer();
     turnCount++;
-    console.log(e.target.textContent);
-    console.log(currentPlayer.name);
     checkWinner();
     checkTie();
     gameOver();
@@ -77,49 +77,46 @@ function checkWinner() {
 
 function checkHorizontal() {
   if (checkCells(one, two, three)) {
-    changeWinnerColor(one, two, three);
     displayWinner();
+    changeWinnerColor(one, two, three);
     return (currentPlayer.isWinner = true);
   }
   if (checkCells(four, five, six)) {
-    changeWinnerColor(four, five, six);
     displayWinner();
+    changeWinnerColor(four, five, six);
     return (currentPlayer.isWinner = true);
   }
   if (checkCells(seven, eight, nine)) {
-    changeWinnerColor(seven, eight, nine);
     displayWinner();
+    changeWinnerColor(seven, eight, nine);
     return (currentPlayer.isWinner = true);
   }
 }
 
 function checkVertical() {
   if (checkCells(one, four, seven)) {
+    displayWinner();
     changeWinnerColor(one, four, seven);
-    displayWinner();
     return (currentPlayer.isWinner = true);
-  }
-  if (checkCells(two, five, eight)) {
+  } else if (checkCells(two, five, eight)) {
+    displayWinner();
     changeWinnerColor(two, five, eight);
-    displayWinner();
     return (currentPlayer.isWinner = true);
-  }
-  if (checkCells(three, six, nine)) {
-    changeWinnerColor(three, six, nine);
+  } else if (checkCells(three, six, nine)) {
     displayWinner();
+    changeWinnerColor(three, six, nine);
     return (currentPlayer.isWinner = true);
   }
 }
 
 function checkDiagonal() {
   if (checkCells(one, five, nine)) {
+    displayWinner();
     changeWinnerColor(one, five, nine);
-    displayWinner();
     return (currentPlayer.isWinner = true);
-  }
-  if (checkCells(three, five, seven)) {
-    changeWinnerColor(three, five, seven);
+  } else if (checkCells(three, five, seven)) {
     displayWinner();
+    changeWinnerColor(three, five, seven);
     return (currentPlayer.isWinner = true);
   }
 }
@@ -145,7 +142,6 @@ function init() {
   outcome.textContent = "";
   player1.isWinner = false;
   player2.isWinner = false;
-  //   currentPlayer = player1;
   button.style.display = "none";
   removeWinnerColor();
   resetGrid();
