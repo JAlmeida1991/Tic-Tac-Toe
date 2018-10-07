@@ -1,6 +1,6 @@
 @import "base";
 
-#container > * {
+.container > * {
   text-align: center;
   font-size: 7rem;
   transition: color 1s;
@@ -9,7 +9,7 @@
   }
 }
 
-#container {
+.container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -22,7 +22,7 @@
   }
 }
 
-.button {
+.btn {
   display: none;
   margin: 0 auto;
   border: none;
@@ -32,9 +32,12 @@
   border-radius: 0.4rem;
   cursor: pointer;
   outline: none;
+  box-shadow: 0 0.3rem 0.2rem #333;
+  transition: all 0.2s;
+  font-weight: bolder;
   &:active {
     transform: translateY(0.1rem);
-    box-shadow: 0 0.1rem 0.1rem $colorBlack;
+    box-shadow: none;
   }
 }
 
@@ -55,39 +58,39 @@
   font-size: 2.5rem;
 }
 
-#one {
+.one {
   border-bottom: 0.2rem solid $colorBlack;
   border-right: 0.2rem solid $colorBlack;
 }
 
-#two {
+.two {
   border-bottom: 0.2rem solid $colorBlack;
   border-right: 0.2rem solid $colorBlack;
 }
 
-#three {
+.three {
   border-bottom: 0.2rem solid $colorBlack;
 }
 
-#four {
-  border-bottom: 0.2rem solid $colorBlack;
-  border-right: 0.2rem solid $colorBlack;
-}
-
-#five {
+.four {
   border-bottom: 0.2rem solid $colorBlack;
   border-right: 0.2rem solid $colorBlack;
 }
 
-#six {
+.five {
   border-bottom: 0.2rem solid $colorBlack;
-}
-
-#seven {
   border-right: 0.2rem solid $colorBlack;
 }
 
-#eight {
+.six {
+  border-bottom: 0.2rem solid $colorBlack;
+}
+
+.seven {
+  border-right: 0.2rem solid $colorBlack;
+}
+
+.eight {
   border-right: 0.2rem solid $colorBlack;
 }
 
