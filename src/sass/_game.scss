@@ -1,0 +1,68 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 40rem;
+  height: 40rem;
+  margin: 3.5rem auto;
+
+  @media only screen and (max-width: 40em) {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  & > * {
+    text-align: center;
+    font-size: 7rem;
+    transition: color 1s;
+    @media only screen and (max-width: 40em) {
+      font-size: 5rem;
+    }
+  }
+}
+
+.grid {
+  padding-top: 2rem;
+  cursor: pointer;
+}
+.outcome {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.one {
+  border-bottom: $gameLine;
+  border-right: $gameLine;
+}
+
+.two {
+  border-bottom: $gameLine;
+  border-right: $gameLine;
+}
+
+.three {
+  border-bottom: $gameLine;
+}
+
+.four {
+  border-bottom: $gameLine;
+  border-right: $gameLine;
+}
+
+.five {
+  border-bottom: $gameLine;
+  border-right: $gameLine;
+}
+
+.six {
+  border-bottom: $gameLine;
+}
+
+.seven {
+  border-right: $gameLine;
+}
+
+.eight {
+  border-right: $gameLine;
+}

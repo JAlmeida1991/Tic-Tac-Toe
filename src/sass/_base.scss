@@ -1,17 +1,14 @@
-$colorBlack: #000;
-$colorWinner: #e74c3c;
-$bgColor: #eee;
-
 *::before,
 *::after,
 * {
-  box-sizing: border-box;
+  box-sizing: inherit;
   padding: 0;
   margin: 0;
 }
 
 html {
   font-size: 62.5%;
+  box-sizing: border-box;
 }
 
 body {
